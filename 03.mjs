@@ -39,12 +39,10 @@ const score = lines.reduce((total, row) => {
   return total + getPriority([first, second]);
 }, 0);
 
-const score2 = groupByThree(lines).reduce((total, group) => {
-  return (
-    total +
-    getPriority([group[0].split(""), group[1].split(""), group[2].split("")])
-  );
-}, 0);
+const score2 = groupByThree(lines).reduce(
+  (total, group) => total + getPriority(group.map((row) => row.split(""))),
+  0
+);
 
 console.log(`Answer 1: ${score}`);
 console.log(`Answer 2: ${score2}`);
