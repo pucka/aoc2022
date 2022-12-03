@@ -27,10 +27,10 @@ const getPriority = (arrays) => {
   return priority;
 };
 
-const groupByThree = ([a, b, c, ...rest]) => {
-  if (rest.length === 0) return [[a, b, c].filter((x) => x !== undefined)];
-  return [[a, b, c]].concat(groupByThree(rest));
-};
+const groupByThree = ([a, b, c, ...rest]) =>
+  rest.length === 0
+    ? [[a, b, c].filter((x) => x)]
+    : [[a, b, c]].concat(groupByThree(rest));
 
 const score = lines.reduce((total, row) => {
   const first = row.slice(0, row.length / 2).split("");
