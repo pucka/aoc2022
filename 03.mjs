@@ -28,9 +28,7 @@ const getPriority = (arrays) => {
 };
 
 const groupByThree = ([a, b, c, ...rest]) =>
-  rest.length === 0
-    ? [[a, b, c].filter((x) => x)]
-    : [[a, b, c]].concat(groupByThree(rest));
+  [[a, b, c]].concat(rest.length ? groupByThree(rest) : []);
 
 const score = lines.reduce((total, row) => {
   const first = row.slice(0, row.length / 2).split("");
