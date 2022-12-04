@@ -2,7 +2,7 @@ import { readFile } from "node:fs/promises";
 
 const lines = (await readFile("./02.txt", { encoding: "UTF8" }))
   .split("\n")
-  .filter((row) => row);
+  .filter((line) => line);
 
 const rock = ["A", "X"];
 const paper = ["B", "Y"];

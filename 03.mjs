@@ -2,16 +2,12 @@ import { readFile } from "node:fs/promises";
 
 const lines = (await readFile("./03.txt", { encoding: "UTF8" }))
   .split("\n")
-  .filter((row) => row);
+  .filter((line) => line);
 
 const getDuplicate = (arrays) => {
   return [
     ...new Set(
-      arrays.shift().filter(function (v) {
-        return arrays.every(function (a) {
-          return a.indexOf(v) !== -1;
-        });
-      })
+      arrays.shift().filter((v) => arrays.every((a) => a.indexOf(v) !== -1))
     ),
   ][0];
 };
